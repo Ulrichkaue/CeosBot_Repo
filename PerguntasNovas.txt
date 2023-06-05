@@ -1,0 +1,2 @@
+Nome,Email,Pergunta
+Não,/start,Como funcionam os indicadores acadêmicos?

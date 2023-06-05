@@ -1,0 +1,313 @@
+version: "3.1"
+
+intents:
+- inicio:
+    use_entities:
+    - inicio
+- matricula_geral:
+    use_entities:
+    - matricula
+- quest_matricula_disciplina:
+    use_entities:
+    - m_disciplina
+- quest_matricula_tcc:
+    use_entities:
+    - m_tcc
+- quest_realizar_estagio:
+    use_entities:
+    - r_estagio
+- quest_matricula_indeferida:
+    use_entities:
+    - m_indeferida
+- quest_matricula_fora_fct:
+    use_entities:
+    - m_forafct
+- quest_atestado_MatVincHist:
+    use_entities:
+    - a_matvinchist
+- quest_2a_chamada:
+    use_entities:
+    - 2a_chamada
+- quest_rematricula_TCC:
+    use_entities:
+    - rm_tcc
+- quest_email_institucional:
+    use_entities:
+    - e_institucional
+- quest_atividades_ExtCompEstagSup:
+    use_entities:
+    - a_extcompestagsup
+- outra_duvida:
+    use_entities:
+    - continua
+- final:
+    use_entities:
+    - para
+- easter_egg:
+    use_entities: true
+- nlu_fallback:
+    use_entities: true
+- nova_pergunta:
+    use_entities:
+    - p_diferente
+- start:
+    use_entities: []
+entities:
+- inicio
+- matricula
+- m_disciplina
+- m_tcc
+- r_estagio
+- m_indeferida
+- m_forafct
+- a_matvinchist
+- 2a_chamada
+- rm_tcc
+- e_institucional
+- a_extcompestagsup
+- continua
+- para
+- p_diferente
+- nome_usuario
+- email_de_contato
+- pergunta_nova
+slots:
+  nome_usuario:
+    type: text
+    mappings:
+    - type: from_text
+      intent: []
+      conditions:
+      - active_loop: form_nova_pergunta
+        requested_slot: nome_usuario
+  email_de_contato:
+    type: text
+    mappings:
+    - type: from_text
+      intent: []
+      conditions:
+      - active_loop: form_nova_pergunta
+        requested_slot: email_de_contato
+  pergunta_nova:
+    type: text
+    mappings:
+    - type: from_text
+      intent: []
+      conditions:
+        - active_loop: form_nova_pergunta
+          requested_slot: pergunta_nova
+responses:
+  utter_resposta_inicio:
+  - text: Olá, sou Ceos o chatbot da Universidade Federal do Pará, responsável por ajudar você discente. Em que posso ajudá-lo?
+  utter_resposta_matricula_geral:
+  - text: |-
+      Entendi, como você solicitou informações sobre matrícula o que tenho aqui sobre matrícula é: 
+      - Matrícula em uma ou mais disciplinas da FCT. 
+      - Matrícula no Trabalho de Conclusão de Curso (TCC). 
+      - Matrícula indeferida. 
+      - Matrícula em uma ou mais disciplinas de fora da FCT. 
+      - Rematrícula no TCC. 
+      - Outra opção que gostaria de solicitar da secretaria. 
+      Lembrando que você deve escrever qual opção deseja saber. OK?!
+  utter_resposta_final:
+  - text: Até mais! estou disponível sempre que tiver dúvidas
+  utter_resposta_quest_matricula_disciplina:
+  - text: |-
+      Muito bem! tenho as informações básicas necessárias para te orientar por meio do passo-a-passo abaixo de como realizar matrícula em uma ou mais disciplinas da FCT 
+      1. Fique atento ao período de matrícula presente no calendário acadêmico, pois só poderá fazer matrícula nesse período 
+      2. Após essa verificação você deve fazer login no SIGAA (sigaa.ufpa.br) 
+      3. Em seguida ao login faça o seguinte percurso Ensino -> Matrícula On-Line -> Realizar Matrícula 
+      4. No menu após o passo 3, as disciplinas disponibilizadas pela FCT estarão presentes em 'Ver equivalentes a Est. Curricular'. 
+      5*. Caso a disciplina que busque não esteja nessa aba, segue o passo abaixo 
+      6*. Você pode buscar a disciplina pelo código na aba 'Buscar Turmas Abertas', nessa aba preencha APENAS o campo 'Código do Componente' com o código disponibilizado nas listas de ofertas e clique em 'Buscar' 
+      Gostaria de continuar?
+  utter_resposta_quest_matricula_tcc:
+  - text: |-
+      Aqui seguem as informações referentes à solicitação de matrícula no TCC presentes com o Ceos. 
+      O passo-a-passo é o seguinte: 
+      1. Acessar o site do sagitta (https://sagitta.ufpa.br/sagitta/) e realizar a entrada no sistema com o mesmo 
+      usuário de acesso do SIGAA, após login, seguir os passos nos menus: SAGITTA -> Nova chamada -> ITEC -> FACULDADE 
+      DE ENGENHARIA DA COMP. E TELECOM -> Trabalho de Conclusão de Curso. 
+      2. No SAGITTA, deve ser anexado o formulário presente na área do Trabalho de Conclusão de Curso (https://docs.google.com/document/d/1alhvK6R4kmQTWaiYMtNeE9yR6LgPTEgb/edit), com todos 
+      os campos necessários devidamente preenchidos, no chamados para matrícula no TCC. OBS: As informações serão passadas 
+      para o SIGAA. Atualmente, o sistema permite somente o cadastro de orientador e co-orientador docentes, 
+      assim o orientador DEVE ser docente da UFPA. 
+      Caso o co-orientador não seja docente da UFPA, a FCT poderá emitir um atestado de co-orientação. 
+      * Agendamento da defesa do TCC (Docente): 
+      3. O agendamento do TCC deve ser realizado pelo orientador, através do SIGAA, em: Ensino -> Orientação Acadêmica - 
+      Graduação -> Cadastrar Banca. (Caso o orientador não seja da FCT é necessário que na banca haja ao menos 1 professor 
+      da FCT) 
+      4. Após a apresentação do TCC, o(a) orientador(a) deve lançar o conceito do(a) discente no SIGAA. 
+      5. Por fim, o docente deve entregar o relatório de defesa e a ata de defesa à secretaria da FCT, enviando email 
+      para rose.itec.fct@gmail.com, hewerton@ufpa.br ou leonardolr@ufpa.br. 
+      6. Após a defesa, o discente terá 30 dias para entregar a cópia digital da versao final do TCC para a faculdade. 
+      O discente deve enviar email para rose.itec.fct@gmail.com, hewerton@ufpa.br ou leonardolr@ufpa.br, com cópia para o orientador 
+      que deve realizar a confirmação que o documento é de fato a versão final do TCC. 
+      Gostaria de continuar?
+  utter_resposta_quest_realizar_estagio:
+  - text: |-
+      Esse é o passo-a-passo presente no Ceos sobre estágio da FCT: 
+      1. identificar se o estágio é obrigatório ou não obrigatório. 
+      1.1. O estágio obrigatório contabiliza para o histórico do aluno, é componente curricular do curso, 
+      assim o aluno deve realizar algum tipo desse estágio para estar apto a se formar. 
+      A FCT apresenta duas componentes de estágio, uma de 120h e a outra de 240h, as quais podem ser realizadas 
+      separadamente ou em um único estágio contabilizando 360h ou mais. 
+      1.2. O estágio não obrigatório é uma atividade que não é contabilizada no histórico como estágio, porém 
+      pode ser cotabilizada para atividades complementares. Após o período de 2021.3 todo estágio 
+      deve seguir o passo-a-passo descrito, caso não siga não serão aceitos como atividades complementares. 
+      2. Verifique se você está matriculado no período letivo atual, desse modo o aluno deve ter um atestado 
+      de matrícula atualizado. 
+      3. Verifique se a empresa possui convênio com a UFPA (verificação no link 1*). 
+      Caso não tenha convênio é possível solicitar o cadastro, conforme apresentado em 2*. 
+      O estágio só é PERMITIDO se houver o convênio. 
+      OBS. A documentação em 2* pode ser enviada de maneira física através do protocolo da reitoria da UFPA 
+      ou enviada para o email cadisdensino@ufpa.br. Para enviar de maneira eletrônica é necessário 
+      que os documentos estejam assinados com assinaturas eletrônicas. 
+      4. É necessário providenciar Plano de Estágio presente nas últimas páginas do Termo de Compromisso, conforme em 2*. Preencha o plano de estágio e encaminhe para a FCT. 
+      5. Providencie Termo de Compromisso entre o aluno, UFPA e empresa, conforme modelo em 2*. 
+      5.1. Em caso de estágio obrigatório quem assina no campo da UFPA é a faculdade. 
+      5.2. Em caso de estágio não obrigatório, quem assina e trata das questões do estágio é a central de estágios. Nesse caso, a faculdade ainda cuida de avaliar o plano de estágio. 
+      6. Para estágio obrigatório, a solicitação de matrícula em estágio deve ser realizada via SAGITTA. 
+      6.1. A matrícula na disciplina de estágio obrigatório só será efetivada caso o aluno já tenha obtido aprovação em todas as disciplinas obrigatórias do 5º bloco. 
+      6.2. O coordenador de estágio avalia os casos em que o estágio não completa a carga horária no mesmo PL. 
+      7. Ao final, para que o estágio obrigatório possa ser creditado em seu histórico, o aluno deve providenciar um relatório contendo as atividades realizadas, o local onde o estágio foi realizado, período do estágio, 
+      carga horária semanal, carga horária total, conceito atribuído pelo supervisor ao estagiário 
+      e uma breve avaliação do supervisor. O aluno deve submeter o relatório para a faculdade via SAGITTA. 
+      O relatório deve ser assinado pelo(a) aluno(a) e pelo supervisor de estágio. 
+      OBS 1. A UFPA fornece seguro de vida pra discentes em estágio obrigatório. Vide 3* para mais informações. 
+      OBS 2. Para visualizar perguntas frequentes, vide 4*. 
+      8. Links citados acima: 
+      1* http://centraldeestagios.ufpa.br/view/inicio/index.php?action=concedentes 
+      2* http://centraldeestagios.ufpa.br/view/inicio/index.php?action=cadastroConcedente 
+      3* https://proad.ufpa.br/index.php/seguro-para-discentes 
+      4* https://docs.google.com/document/d/1-lXpn85lbApZTAfjgc3H5svgwOJaMAxX 
+      5* http://www.centraldeestagios.ufpa.br/view/inicio/index.php?action=documentacaoAluno 
+      Gostaria de continuar?
+  utter_resposta_quest_matricula_indeferida:
+  - text: |-
+      As informações presentes sobre matrícula indeferida são que: 
+      1. Caso após o período de rematrícula, você não consiga vaga em alguma disciplina, deverá comparecer à secretaria da FCT (no período atual de pandemia estes processo pode ser realizado por email: rose.itec.fct@gmail.com, hewerton@ufpa.br ou leonardolr@ufpa.br). 
+      2. Preencher o requerimento de matrícula disponibilizado pela secretaria e retornar o mesmo já preenchido para a secretaria. 
+      3. Nesse período de pandemia o email enviado para a secretaria deve conter as informações como solicitação do requerimento para matrícula, nome completo no aluno, número de matrícula, código da disciplina e etc. 
+      *(quanto mais informações você disponibilizar melhor). 
+      4. Após essa procedimento o tratamento da sua solicitação será interno à faculdade. 
+      Gostaria de continuar?
+  utter_resposta_quest_matricula_fora_fct:
+  - text: |-
+      Para solicitar matrícula em disciplina que não é da faculdade de computação e telecomunicações o passo-a-passo a se seguir é: 
+      1. Comparecer à secretaria da FCT e solicitar o requerimento de matrícula. 
+      2. Preencher o requerimento referente à matrícula fora da FCT (assinado e carimbado pelo(a) secretrário(a)). 
+      3. Entregar o requerimento preenchido para a faculdade referente à matéria que você deseja fazer, assim eles abrirão vaga para sua matrícula. 
+      4. Em caso de pandemia esse procedimento é realizado por email (rose.itec.fct@gmail.com, hewerton@ufpa.br e leonardolr@ufpa.br) para solicitar o requerimento e enviar para o e-mail da faculdade referente. 
+      Gostaria de continuar?
+  utter_resposta_quest_atestado_MatVincHist:
+  - text: |-
+      O procedimento para adquirir o atestado de matrícula, vínculo e/ou histórico é: 
+      1. Fazer login na plataforma SIGAA (https://sigaa.ufpa.br/sigaa/verTelaLogin.do). 
+      2. No 'portal do discente' selecione a opção nos menus 'Ensino' e na aba pop-up você pode selecionar: Emitir Atestado de Matrícula, Emitir Declaração de Vínculo e Emitir Histórico. 
+      3. Cada menu acima o levará para o respectivo documento que você deseja. 
+      Gostaria de continuar?
+  utter_resposta_quest_2a_chamada:
+  - text: |-
+      Caso você tenha perdido uma prova por motivos de saúde, siga os seguintes passos: 
+      1. Acessar o site do sagitta (https://sagitta.ufpa.br/sagitta/) e realizar a entrada no sistema com o mesmo 
+      usuário de acesso do SIGAA, após login, seguir os passos nos menus: SAGITTA -> Nova chamada -> ITEC -> FACULDADE 
+      DE ENGENHARIA DA COMP. E TELECOM -> Segunda Chamada.
+      2. Na página do SAGITTA para abrir o chamado você deve enviar a comprovação que justifique sua falta na data da atividade avaliativa (no máximo até 48h após a prova). 
+      * No preenchimento da solicitação informe os seguintes dados: Disciplina (Código e Turma), Professor e o dia e hora que a atividade foi realizada.
+      Gostaria de continuar?
+  utter_resposta_quest_rematricula_TCC:
+  - text: |-
+      Caso seu trabalho de conclusão de curso não seja finalizado no semestre em que você foi matriculado, siga os passos a seguir para se rematricular no TCC no semestre seguinte: 
+      1. No período de matrícula, fazer login em sua conta no SAGITTA (https://sagitta.ufpa.br/sagitta/). 
+      2. Selecione o menu 'Nova Chamada' e selecione a unidade prestadora do serviço 'ITEC - INSTITUTO DE TECNOLOGIA'. 
+      3. No submenu 'FACULDADE DE ENGENHARIA DA COMP. E TELECOM' selecione a opção 'Trabalho de Conclusão de Curso'. 
+      4. Faça a chamada especificando sua situação sobre o TCC estando em andamento e anexe o Formulário de Ante-Projeto na chamada, após isso sua matrícula será removida do semestre passado 
+      e adicionada no semestre atual. 
+      Gostaria de continuar?
+  utter_resposta_quest_email_institucional:
+  - text: |-
+      Para solicitar o email institucional siga os passos abaixo: 
+      1. Faça login em sua conta no SAGITTA (https://sagitta.ufpa.br/sagitta/). 
+      2. Selecione o menu 'Nova Chamada' e selecione a unidade prestadora do serviço 'CTIC - CENTRO DE TECNOLOGIA DA INFORMACAO E COMUNICAO'. 
+      3. No submenu 'Serviços On-Line' selecione a opção 'Conta Institucional'. 
+      4. Selecione a opção 'Criação de Conta Institucional' e aceite a 'Confirmação de Termo'. 
+      5. Após isso somente aguarde o período estipulado pelo CTIC para criação e ativação da conta. 
+      Gostaria de continuar?
+  utter_resposta_quest_atividades_ExtCompEstagSup:
+  - text: |-
+      Para dar entrada nas cargas horárias de extensão, complementares e/ou estágio supervisionado, siga os passos abaixo: 
+      1. Faça login em sua conta no SAGITTA (https://sagitta.ufpa.br/sagitta/). 
+      2. Selecione o menu 'Nova Chamada' e selecione a unidade prestadora do serviço 'ITEC - INSTITUTO DE TECNOLOGIA'. 
+      3. No submenu 'FACULDADE DE ENGENHARIA DA COMP. E TELECOM' selecione a opção 'Atividades Complementares', 'Atividades de extensão' e/ou 'Estágio Supervisionado'. 
+      4. Para cada caso deve se fazer uma nova chamada, ou seja, caso queira dar entradas nas 3 cargas horárias deverá abrir 3 chamadas uma para cada respectiva atividade.
+      5. Preencha o requerimento presente na página atual de acordo com a carga horária que deseja consolidar. 
+      6. Anexe os documentos comprovando as horas complementares, de extensão e/ou de estágio supervisionado nos seus respectivos chamados, sejam esses documentos relatórios finais e/ou certificações válidas para cada atividade. 
+      * O discente pode abrir o chamada assim que tiver completado: 120h de carga horária complementar, 360h de carga horária de extensão (dividas de acordo com o PPC de ENGCOMP) e 360h do estágio supervisionado.
+      * Links úteis:
+        a. Resolução de atividades complementares: http://www.fct.ufpa.br/files/FCT_resolucao_ativ_complementares.pdf 
+        b. Link para a página de abertura de chamadas de atividades complementares: https://sagitta.ufpa.br/sagitta/chamada/chamada.jsf?idServico=582
+        c. Informações sobre atividades de extensão na página da FCT: http://fct.ufpa.br/index.php/sobre-a-extensao-pcc  
+        d. Link para a página de abertura de chamadas de atividades complementares: https://sagitta.ufpa.br/sagitta/chamada/chamada.jsf?idServico=1086 
+        e. Modelo para relatórios parcial e final https://www.propesp.ufpa.br/index.php/mestrados-e-doutorados/151-propesp/apresentacao/638-documentos-iniciacao-cientifica
+      Gostaria de continuar?
+  utter_proxima_duvida:
+  - text: |-
+      Muito bem! Qual outra questão gostaria de saber? 
+      Para ajudar na sua escolha tenho as seguintes opções: 
+      - Matrícula em uma ou mais disciplinas da FCT 
+      - Matrícula no TCC 
+      - Problema de matrícula indeferida 
+      - Matrícula em uma ou mais disciplinas fora da FCT 
+      - Como dar entrada na rematricula no TCC 
+      - Solicitar resposta para uma pergunta diferente das que estão presentes 
+      - Como visualizar o atestado de matrícula, declaração de vínculo e histórico do discente na UFPA 
+      - Como solicitar a 2ª chamada 
+      - Informações sobre a realização de estágio 
+      - Como solicitar a criação do email institucional 
+      - Como dar entrada nos documentos das atividades de extensão, complementares e estágio supervisionado
+  utter_refazer_frase:
+  - text: |-
+      Não compreendi seu problema, poderia refazer a frase. 
+      Para auxiliar sua pesquisa tenho as seguintes opções: 
+      - Matrícula em uma ou mais disciplinas da FCT 
+      - Matrícula no TCC 
+      - Problema de matrícula indeferida 
+      - Matrícula em uma ou mais disciplinas fora da FCT 
+      - Como dar entrada na rematricula no TCC 
+      - Solicitar resposta para uma pergunta diferente das que estão presentes 
+      - Como visualizar o atestado de matrícula, declaração de vínculo e histórico do discente na UFPA 
+      - Como solicitar a 2ª chamada 
+      - Informações sobre a realização de estágio 
+      - Como solicitar a criação do email institucional 
+      - Como dar entrada nos documentos das atividades de extensão, complementares e estágio supervisionado
+  utter_ask_form_nova_pergunta_nome_usuario:
+  - text: Muito bem! Informe seu nome completo?
+  utter_ask_form_nova_pergunta_email_de_contato:
+  - text: Ótimo! Qual seu email?
+  utter_ask_form_nova_pergunta_pergunta_nova:
+  - text: Perfeito! Qual a sua pergunta?
+  utter_continuar_apos_form:
+  - text: |-
+      Muito bem! Sua pergunta foi salva meu arquivo e será respondida assim que possível, via e-mail. 
+      Agradeço a ajuda para me fazer um auxiliar melhor 
+      Gostaria de continuar?
+  utter_easter_egg:
+  - text: Uma mensagem para todos que me ajudaram a chegar até onde cheguei
+
+actions:
+- action_extract_data
+- action_resetar_slots
+
+forms:
+  form_nova_pergunta:
+    required_slots:
+      - nome_usuario
+      - email_de_contato
+      - pergunta_nova
+
+e2e_actions: []
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
