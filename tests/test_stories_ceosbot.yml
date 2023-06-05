@@ -1,0 +1,244 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+
+- story: caminho para matrícula geral -> matrícula em disciplina(s) da FCT 
+  steps:
+  - user: |
+      [Ola]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+  
+  - user: |
+      Ajuda com a minha [matrícula]{"entity": "matricula"}
+    intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - user: |
+      Como faço matrícula em [disciplina]{"entity": "m_disciplina"} na UFPA?
+    intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+  - user: |
+      [Quero]{"entity": "continua"} tira outra duvida
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + entrada da carga horária de extensão, complementar e/ou estágio supervisionado
+  steps:
+  - user: |
+      [Boa tarde]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Onde faço pra emitir meu [atestado]{"entity": "a_matvinchist"} de matrícula, [declaração de vínculo]{"entity": "a_matvinchist"} e [histórico]{"entity": "a_matvinchist"}?
+    intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - user: |
+      Tenho [outra dúvida]{"entity": "continua"}
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      Preciso dar [entrada na carga horária]{"entity": "a_extcompestagsup"} de extensão
+    intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + matrícula fora da FCT
+  steps:
+  - user: |
+      [Boa noit]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Quero [integralizar a carga horária complementar]{"entity": "a_extcompestagsup"}, como faço?
+    intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - user: |
+      [Necesito]{"entity": "continua"} de outra informação
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      Não acho disciplinas na FCT, então por isso quero fazer uma [matéria em uma faculdade diferente]{"entity": "m_forafct"}
+    intent: quest_matricula_fora_fct
+  - action: utter_resposta_quest_matricula_fora_fct
+
+- story: caminho para matrícula fora da FCT + matrícula indeferida
+  steps:
+  - user: |
+      [b noite]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Quero uma [disciplina fora da fct]{"entity": "m_forafct"}
+    intent: quest_matricula_fora_fct
+  - action: utter_resposta_quest_matricula_fora_fct
+  
+  - user: |
+      [Ja]{"entity": "continua"} q [insisti]{"entity": "continua"}, [gostaria]{"entity": "continua"} sim
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      Qual processo faço para me matricular em uma matéria caso ela seja [indeferida]{"entity": "m_indeferida"}?
+    intent: quest_matricula_indeferida
+  - action: utter_resposta_quest_matricula_indeferida
+
+- story: caminho para matricula indeferida + dúvida no TCC
+  steps:
+  - user: |
+      [Olá]{"entity": "inicio"}, preciso resolver um problema
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Realizei a rematrícula, e ela deu [indeferida]{"entity": "m_indeferida"}
+    intent: quest_matricula_indeferida
+  - action: utter_resposta_quest_matricula_indeferida
+  
+  - user: |
+      [Gostaria]{"entity": "continua"} de continuar, se possível
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  - user: |
+      Preciso fazer a [matrícula no TCC]{"entity": "m_tcc"}, como que faz?
+    intent: quest_matricula_tcc
+  - action: utter_resposta_quest_matricula_tcc
+
+- story: caminho para matrícula em TCC + dúvida segunda chamada
+  steps:
+  - user: |
+      [Alo]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Próximo semestre será o último. Como me [matriculo no Trabalho de Conclusão de Curso]{"entity": "m_tcc"}
+    intent: quest_matricula_tcc
+  - action: utter_resposta_quest_matricula_tcc
+  
+  - user: |
+      [Precis]{"entity": "continua"} saber mais informacoes
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      Não compareci a um processo avaliativo, Como faço para solicitar uma [2 chamada]{"entity": "2a_chamada"}?
+    intent: quest_2a_chamada
+  - action: utter_resposta_quest_2a_chamada
+
+- story: caminho para realizar 2a chamada + matrícula em uma disciplina
+  steps:
+  - user: |
+      [oi]{"entity": "inicio"}, preciso tirar uma dúvida
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Desejo saber os passos para marcar a [segunda chamada]{"entity": "2a_chamada"} da minha prova
+    intent: quest_2a_chamada
+  - action: utter_resposta_quest_2a_chamada
+
+  - user: |
+      Sim, [por favor]{"entity": "continua"}
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      Como faço minha matrícula numa [disciplina]{"entity": "m_disciplina"} na UFPA?
+    intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+
+- story: caminho para matrícula em disciplina + dúvida para realizar estágio
+  steps:
+  - user: |
+      [Olá]{"entity": "inicio"}, preciso de ajuda para resolver um problema
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Como me matriculo em qualquer [disciplina]{"entity": "m_disciplina"} da FCT
+    intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+
+  - user: |
+      [Quero]{"entity": "continua"} sim, obrigado
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+
+  - user: |
+      Quais os passos pra [fazer um estágio]{"entity": "r_estagio"} na FCT?
+    intent: quest_realizar_estagio
+  - action: utter_resposta_quest_realizar_estagio
+
+- story: caminho para realizar estágio obrigatório ou não obrigatório + criar email institucional
+  steps:
+  - user: |
+      [Olá]{"entity": "inicio"}, preciso de ajuda para resolver um problema
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Queria [realizar o estágio supervisionado]{"entity": "r_estagio"}
+    intent: quest_realizar_estagio
+  - action: utter_resposta_quest_realizar_estagio
+
+  - user: |
+      [Gostaria]{"entity": "continua"} de tirar outra dúvida
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      O que faço para ter um [email institucional]{"entity": "e_institucional"}?
+    intent: quest_email_institucional
+  - action: utter_resposta_quest_email_institucional
+
+- story: caminho para email institucional + rematrícula no TCC
+  steps:
+  - user: |
+      [oi]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Como crio meu [e-mail institucional]{"entity": "e_institucional"}?
+    intent: quest_email_institucional
+  - action: utter_resposta_quest_email_institucional
+  
+  - user: |
+      [Quero]{"entity": "continua"} sanar outra situação
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      O semestre está acabando, qual o procedimento de [rematricula no Trabalho de Conclusão de Curso]{"entity": "rm_tcc"}?
+    intent: quest_rematricula_TCC
+  - action: utter_resposta_quest_rematricula_TCC
+
+- story: caminho para rematrícula no TCC + matricula geral
+  steps:
+  - user: |
+      [Olá]{"entity": "inicio"}
+    intent: inicio
+  - action: utter_resposta_inicio
+
+  - user: |
+      Meu orientador disse para passar o tcc pro próximo semestre, como faço a [rematrícula no tcc]{"entity": "rm_tcc"}?
+    intent: quest_rematricula_TCC
+  - action: utter_resposta_quest_rematricula_TCCC
+  
+  - user: |
+      [Sim]{"entity": "continua"}
+    intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - user: |
+      O que tens sobre [matrícula]{"entity": "matricula"}?
+    intent: quest_matricula_geral
+  - action: utter_resposta_quest_matricula_geral
