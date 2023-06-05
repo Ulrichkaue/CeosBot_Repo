@@ -1,0 +1,232 @@
+version: "3.1"
+
+nlu:
+- intent: inicio
+  examples: |
+    - [Oi](inicio)
+    - [Olá](inicio)
+    - [Opa](inicio)
+    - [Bom dia](inicio)
+    - [Boa tarde](inicio)
+    - [Boa noite](inicio)
+    - [Olá](inicio), preciso de ajuda para resolver um problema
+    - [Oi](inicio), preciso tirar uma dúvida
+    - [Bom dia](inicio), preciso de uma informação sobre matrícula em uma disciplina
+    - [Boa tarde](inicio), gostaria de saber como me matricular no TCC
+    - [Boa noite](inicio), como faço para integralizar meu estágio supervisionado
+    - [oi](inicio)
+- intent: matricula_geral
+  examples: |
+    - [matrícula](matricula)
+    - Quero ajuda com [matrícula](matricula)
+    - Preciso de informações sobre [matrícula](matricula)
+    - Estou com dúvidas sobre [matrícula](matricula)
+    - Estou confuso sobre [matrícula](matricula)
+    - Quais informações tens sobre [matrícula](matricula)?
+    - O que podes me dizer sobre [matrícula](matricula)?
+    - Estou perdido em relação à [matrícula](matricula)
+    - Tô confuso com relação à [matrícula](matricula)
+    - Preciso de ajuda com [matrícula](matricula)
+    - O que fazer sobre minha [matrícula](matricula)?
+    - Não sei o que fazer com minha [matrícula](matricula)
+    - Não sei como me [matricular](matricula)
+    - Preciso de ajuda para me [matricular](matricula)
+    - Estou tentando me [matricular](matricula) e não consigo
+    - Não sei o que fazer para me [matricular](matricula)
+    - Preciso de ajuda com minha [matrícula](matricula)
+    - Tens informações sobre [matrícula](matricula)?
+    - Preciso de ajuda com a minha [matrícula](matricula)
+- intent: quest_matricula_disciplina
+  examples: |
+    - Estou com problemas para realizar a matrícula em uma [disciplina](m_disciplina)
+    - Não consigo me matricular em uma [disciplina](m_disciplina)
+    - Quero ajuda com a matrícula em [disciplinas](m_disciplina)
+    - Não sei como me matrícular nas [disciplinas](m_disciplina)
+    - Preciso me matricular nas [disciplinas](m_disciplina) do segundo semestre
+    - Quero fazer a matrícula nas [disciplinas](m_disciplina) do 2º semestre
+    - Não sei onde realizar a matrícula em uma [disciplina](m_disciplina) da faculdade
+    - Como faço minha matrícula em uma [disciplina](m_disciplina) na UFPA?
+    - Preciso fazer minha matrícula nas [disciplinas](m_disciplina) do semestre e não consigo
+    - Preciso saber como faço para me matricular em alguma [disciplina](m_disciplina)
+    - Quais os passos que preciso fazer para me matricular em qualquer [disciplina](m_disciplina) da FCT
+    - [1](m_disciplina)
+- intent: quest_matricula_tcc
+  examples: |
+    - [matrícula no TCC](m_tcc)
+    - [matrícula no Trabalho de conclusão de curso](m_tcc)
+    - Estou tentando me [matricular no TCC](m_tcc)
+    - Não consigo me [matricular no trabalho de conclusão de curso](m_tcc)
+    - Preciso fazer a [matrícula no TCC](m_tcc), como faço?
+    - Não sei como me [matricular no TCC](m_tcc)
+    - Estou no último semestre da faculdade e preciso saber como realizar a [matrícula no TCC](m_tcc)
+    - Próximo semestre será o último e não sei como me [matricular no Trabalho de Conclusão de Curso](m_tcc)
+    - Estou no último semestre como faço a [matrícula no Trabalho de Conclusão de Curso](m_tcc)
+    - Quero me [matricular no trabalho de conclusão de curso] e não sei como
+    - Como faço a [matrícula no trabalho de conclusão de curso](m_tcc)?
+    - [2](m_tcc)
+- intent: quest_matricula_indeferida
+  examples: |
+    - Minha matrícula foi [indeferida](m_indeferida)
+    - Quero me matricular em uma disciplina, mas fui [indeferido](m_indeferida)
+    - Fui [indeferido](m_indeferida) e o período de matrícula acabou
+    - Fui [indeferida](m_indeferida) e o período de rematrícula acabou
+    - Realizei a rematrícula, porém foi [indeferida](m_indeferida)
+    - Como proceder com a matrícula [indeferida](m_indeferida), se o período de matrícula acabou?
+    - Qual processo devo fazer para me matricular em uma matéria caso ela seja [indeferida](m_indeferida)?
+    - Por algum motivo meu processo de matrícula foi dado como [indeferido](m_indeferida), o que faço?
+    - Que procedimento seguir quando a matrícula é [indeferida](m_indeferida)?
+    - Saiu o resultado do processo de rematrícula e fui [indeferido](m_indeferida), e agora?
+    - Não sei o que fazer com a minha matrícula [indeferida](m_indeferida)
+    - [3](m_indeferida)
+- intent: quest_matricula_fora_fct
+  examples: |
+    - Quero fazer uma [matéria fora da FCT](m_forafct)
+    - Desejo pagar uma [matéria em outra faculdade](m_forafct)
+    - Não achei disciplinas na faculdade de computação e telecomunicações por isso quero fazer essa [matéria em uma faculdade diferente](m_forafct)
+    - Tenho interesse em uma [disciplina de outra faculdade](m_forafct)
+    - Quero me matricular em uma [disciplina fora da fct](m_forafct)
+    - Tenho interesse em uma matéria, porém ela é de [outra faculdade](m_forafct), o que faço?
+    - Desejo me matricular em uma disciplina, só que ela [não é da fct](m_forafct), como me matrículo?
+    - O que fazer para me matricular em uma disciplina que [não consta na grade da fct](m_forafct)?
+    - Quais os procedimentos para conseguir vaga em uma disciplina de [fora da faculdade de computação e telecomunicações](m_forafct?
+    - Preciso fazer uma disciplina optativa, mas só foi ofertada em [outra faculdade](m_forafct), o que faço para conseguir matrícula?
+    - Quero cursar uma disciplina obrigatória em [outra faculdade](m_forafct), como faço?
+    - [4](m_forafct)
+- intent: quest_rematricula_TCC
+  examples: |
+    - Não vou conseguir terminar meu TCC a tempo, preciso me [rematricular no trabalho de conclusão de curso](rm_tcc)
+    - Como fazer a [rematrícula no tcc](rm_tcc)?
+    - Preciso de mais tempo para meu tcc, mas o semestre está acabando, qual o processo de [rematricula no Trabalho de Conclusão de Curso](rm_tcc)?
+    - Como consigo me [rematricular no TCC](rm_tcc)?
+    - O semestre está acabando e meu orientador disse para passar o tcc para o próximo semestre, como faço a [rematrícula no tcc](rm_tcc)?
+    - Necessito de outro semestre para finalizar o trabalho de conclusão de curso, como faço a [rematrícula no tcc](rm_tcc)?
+    - Estou sem tempo no semestre para acabar o TCC, gostaria de me [rematricular no trabalho](rm_tcc), é possível?
+    - Quero usar um semestre a mais para melhorar o TCC, preciso me [rematricular no trabalho de conclusão de curso](rm_tcc)?
+    - É possível se [rematricular no tcc](rm_tcc)?
+    - Quero mais tempo, posso fazer [rematrícula no trabalho de conclusão de curso](rm_tcc)?
+    - Qual o procedimento para me [rematricular no TCC](rm_tcc)?
+    - [5](rm_tcc)
+    - Preciso fazer minha [rematrícula no TCC](rm_tcc), perdi o período infelizmente
+    - perdi o período, como faço pra me [rematricular no tcc](rm_tcc)?
+- intent: nova_pergunta
+  examples: |
+    - Quero sugerir uma [nova pergunta](p_diferente)
+    - Gostaria de fazer uma [pergunta diferente](p_diferente)
+    - A pergunta que preciso resolver não está presente, posso [adicionar outra](p_diferente)?
+    - Preciso da resposta de uma pergunta diferente das que estão presentes, como faço para solicitar essa [outra questão](p_diferente)?
+    - Não é nenhuma dessas, preciso da resposta de [outra questão](p_diferente)
+    - [6](p_diferente)
+    - Quero pedir uma [pergunta diferente](p_diferente)
+- intent: quest_atestado_MatVincHist
+  examples: |
+    - Preciso do meu [atestado](a_matvinchist) de matrícula
+    - Quero emitir meu [atestado](a_matvinchist) de matrícula
+    - Não sei como conseguir meu [atestado](a_matvinchist) de matrícula
+    - Preciso da minha [declaração de vínculo](a_matvinchist)
+    - Quero emitir minha [declaração de vínculo](a_matvinchist)
+    - Não sei como conseguir minha [declaração de vínculo](a_matvinchist)
+    - Preciso do meu [histórico](a_matvinchist)
+    - Quero emitir meu [histórico](a_matvinchist)
+    - Não sei como conseguir meu [histórico](a_matvinchist)
+    - Como encontro meu [atestado](a_matvinchist) de matrícula?
+    - Onde consigo emitir meu [atestado](a_matvinchist) de matrícula, minha [declaração de vínculo](a_matvinchist) e [histórico](a_matvinchist)?
+    - [7](a_matvinchist)
+- intent: quest_2a_chamada
+  examples: |
+    - Perdi uma prova e quero solicitar a [segunda chamada](2a_chamada)
+    - Faltei uma prova e quero fazer a [2ª chamada](2a_chamada)
+    - Não fiz uma prova por motivos de saúde e preciso saber quais os procedimentos para fazer a [segunda chamada](2a_chamada)
+    - Perdi prova por ficar doente, como faço a [2ª chamada](2a_chamada)?
+    - Como solicito a [segunda chamada](2a_chamada) de uma prova?
+    - Qual o procedimento para realizar a [2ª chamada](2a_chamada) de uma prova?
+    - Desejo saber os passos para marcar a [segunda chamada](2a_chamada) da minha prova
+    - Não compareci a um processo avaliativo e o professor me disse para solicitar a [segunda chamada](2a_chamada), como faço isso?
+    - Gostaria de me informar sobre a solicitação de [2ª chamada](2a_chamada), como funciona?
+    - Fiquei doente e faltei prova, existe um processo para solicitar a [segunda chamada](2a_chamada)?
+    - Faltei no dia da prova, por motivo de consulta médica, como faço a [2ª chamada](2a_chamada)?
+    - [8](2a_chamada)
+    - Quero ajuda com uma [2ª chamada](2a_chamada) que preciso fazer
+    - Fiquei doente e perdi uma prova, preciso dar entrada em uma [2ª chamada](2a_chamada), como faço?
+    - Queria saber sobre [segunde chamadi](2a_chamada)
+- intent: quest_realizar_estagio
+  examples: |
+    - Estou com dúvida para [realizar o estágio supervisionado](r_estagio)
+    - Quero começar um [estágio obrigatório](r_estagio)
+    - Gostaria de fazer o [estágio não obrigatório](r_estagio)
+    - Preciso saber como [iniciar meu estágio](r_estagio)
+    - Como faço para [validar meu estágio obrigatório](r_estagio)
+    - Como faço para [validar meu estágio não obrigatório](r_estagio)
+    - Como faço para [validar meu estágio supervisionado](r_estagio)
+    - Qual o passo-a-passo para [fazer um estágio](r_estagio) na FCT?
+    - Qual o procedimento devo seguir para [fazer um estágio] na Faculdade de Computação e Telecomunicações?
+    - O que devo fazer para [creditar estágio] na FCT?
+    - Que processo devo seguir para [creditar meu estágio](r_estagio)?
+    - [9](r_estagio)
+    - o que preciso saber sobre estagio?
+    - o que preciso saber sobre [estag](r_estagio)
+- intent: quest_email_institucional
+  examples: |
+    - Preciso do meu [email institucional](e_institucional), como consigo ele?
+    - Quero abrir meu [email institucional](e_institucional)
+    - Estou em aulas online e preciso do meu [e-mail institucional](e_institucional)
+    - Como crio meu [e-mail institucional](e_institucional)?
+    - Onde crio meu [email da UFPA](e_institucional)?
+    - Qual o procedimento para fazer um [email institucional](e_institucional)?
+    - Quero usufruir do drive do [email institucional](e_institucional), como crio ele?
+    - Quero usar a internet da UFPA, mas preciso do [email institucional](e_institucional), onde consigo um?
+    - Que processo sigo para fazer meu [email da UFPA](e_institucional)?
+    - Quero fazer um [email institucional](e_institucional) para mim
+    - Quero fazer um [email da UFPA](e_institucional) para mim
+    - [10](e_institucional)
+- intent: quest_atividades_ExtCompEstagSup
+  examples: |
+    - Preciso dar [entrada na carga horária](a_extcompestagsup) das atividades de extensão
+    - Preciso dar [entrada na carga horária](a_extcompestagsup) das atividades complementares
+    - Preciso dar [entrada na carga horária](a_extcompestagsup) do estágio supervisionado
+    - Tenho certificados para [usar como carga horária de extensão](a_extcompestagsup), como faço para usar?
+    - Tenho certificados para [usar como carga horária complementar](a_extcompestagsup), como faço para usar?
+    - Tenho um relatório final de estágio e gostaria de [usar como carga horária de extensão](a_extcompestagsup)
+    - Tenho um relatório final de estágio e gostaria de [usar como estágio supervisionado](a_extcompestagsup)
+    - Quero [integralizar a carga horária complementar](a_extcompestagsup) com certificados, como faço?
+    - Onde posso [abater a carga horária de extensão](a_extcompestagsup)?
+    - Qual o processo para [integralizar o estágio supervisionado](a_extcompestagsup)?
+    - Faço estágio em uma empresa e quero [usar a carga horária](a_extcompestagsup), como faço?
+    - [11](a_extcompestagsup)
+- intent: outra_duvida
+  examples: |
+    - [Sim](continua)
+    - [Quero continuar](continua)
+    - Tenho [outra dúvida](continua), então sim
+    - Sim, [gostaria](continua)
+    - Sim, [por favor](continua)
+    - [Preciso](continua) saber mais informações
+    - [Gostaria](continua) de tirar outra dúvida
+    - [Quero](continua) sanar outra situação
+    - [Por favor](continua)
+    - [Necessito](continua) de outra informação
+    - [Desejo](continua) continuar
+    - [Quero](continua) sim, obrigado
+    - [Já](continua) q [insisti](continua), [gostaria](continua) sim
+    - [Gostaria](continua)
+    - [Gostaria](continua) de continuar, se possível
+    - [Pode](continua) ser
+- intent: final
+  examples: |
+    - [Não](para), obrigado por solucionar minha dúvida
+    - [Estou satisfeito](para) com a resposta
+    - [Não precisa](para), solucionou meu problema
+    - [Não precisa](para), agradeço a ajuda
+    - [Por agora não](para), obrigado por solucionar meu problema
+    - [Não](para)
+    - [Não](para) tenho mais dúvidas
+    - [Já fui](para) respondido
+    - [Agradeço](para) a ajuda, mas não
+    - [Dispenso](para), já resolveu o problema
+    - [Resolveu](para) minha situação então, não obrigado
+    - [Não](para), obrigado
+- intent: easter_egg
+  examples: |
+    - Marcelo
+    - Cinthia
+    - Yohan
+    - Pamella

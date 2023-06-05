@@ -1,0 +1,144 @@
+version: "3.1"
+
+stories:
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + dúvida sobre matrícula em disciplina
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + dúvida no TCC
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_tcc
+  - action: utter_resposta_quest_matricula_tcc
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + dúvida no estágio
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_realizar_estagio
+  - action: utter_resposta_quest_realizar_estagio
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + matrícula indeferida
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_indeferida
+  - action: utter_resposta_quest_matricula_indeferida
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + matrícula fora da FCT
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_fora_fct
+  - action: utter_resposta_quest_matricula_fora_fct
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + atestado de matrícula, vínculo e/ou histórico
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + dúvida segunda chamada
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_2a_chamada
+  - action: utter_resposta_quest_2a_chamada
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + rematrícula no TCC
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_rematricula_TCC
+  - action: utter_resposta_quest_rematricula_TCC
+
+- story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + criar email institucional
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_email_institucional
+  - action: utter_resposta_quest_email_institucional
+
+## Modelos para novas histórias iniciadas pela dúvida sobre entrada da carga horária de extensão, complementar e/ou estágio supervisionado
+# - story: caminho para entrada da carga horária de extensão, complementar e/ou estágio supervisionado + 
+#   steps:
+#   - intent: inicio
+#   - action: utter_resposta_inicio
+
+#   - intent: quest_atividades_ExtCompEstagSup
+#   - action: utter_resposta_quest_atividades_ExtCompEstagSup
+  
+#   - intent: outra_duvida
+#   - action: utter_proxima_duvida
+  
+#   - intent: quest_
+#   - action: utter_resposta_quest_

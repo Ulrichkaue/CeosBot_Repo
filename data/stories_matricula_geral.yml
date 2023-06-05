@@ -1,0 +1,85 @@
+version: "3.1"
+
+stories:
+
+- story: caminho para matrícula geral -> matrícula em disciplina(s) da FCT 
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+  
+  - intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+
+- story: caminho para matrícula geral -> matrícula em disciplina(s) fora da FCT 
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - intent: quest_matricula_fora_fct
+  - action: utter_resposta_quest_matricula_fora_fct
+
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+
+- story: caminho para matrícula geral -> matrícula no TCC
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+  
+  - intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - intent: quest_matricula_tcc
+  - action: utter_resposta_quest_matricula_tcc
+
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+
+- story: caminho para matrícula geral -> matrícula indeferida
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - intent: quest_matricula_indeferida
+  - action: utter_resposta_quest_matricula_indeferida
+
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+
+- story: caminho para matrícula geral -> rematrícula no tcc
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: matricula_geral
+  - action: utter_resposta_matricula_geral
+
+  - intent: quest_rematricula_TCC
+  - action: utter_resposta_quest_rematricula_TCC
+
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+
+## Modelos para novas histórias em relação ao menu de matrícula
+# - story: caminho para matrícula geral -> nova_pergunta
+#   steps:
+#   - intent: matricula_geral
+#   - action: utter_resposta_matricula_geral
+
+#   - intent: nova_pergunta
+#   - action: nova_pergunta_form
+
+#   - intent: outra_duvida
+#   - action: utter_proxima_duvida

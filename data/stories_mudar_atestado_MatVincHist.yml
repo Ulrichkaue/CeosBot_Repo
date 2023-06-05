@@ -1,0 +1,144 @@
+version: "3.1"
+
+stories:
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + dúvida sobre matrícula em disciplina
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_disciplina
+  - action: utter_resposta_quest_matricula_disciplina
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + dúvida no TCC
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_tcc
+  - action: utter_resposta_quest_matricula_tcc
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + dúvida no estágio
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_realizar_estagio
+  - action: utter_resposta_quest_realizar_estagio
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + matrícula indeferida
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_indeferida
+  - action: utter_resposta_quest_matricula_indeferida
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + matrícula em disciplina fora da FCT
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_matricula_fora_fct
+  - action: utter_resposta_quest_matricula_fora_fct
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + realizar 2ª chamada
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_2a_chamada
+  - action: utter_resposta_quest_2a_chamada
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + realizar a rematricula no TCC
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_rematricula_TCC
+  - action: utter_resposta_quest_rematricula_TCC
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + ativar o email institucional
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_email_institucional
+  - action: utter_resposta_quest_email_institucional
+
+- story: caminho para atestado de matrícula, vínculo e/ou histórico + entrada da carga horária de extensão, complementar e/ou estágio supervisionado
+  steps:
+  - intent: inicio
+  - action: utter_resposta_inicio
+
+  - intent: quest_atestado_MatVincHist
+  - action: utter_resposta_quest_atestado_MatVincHist
+  
+  - intent: outra_duvida
+  - action: utter_proxima_duvida
+  
+  - intent: quest_atividades_ExtCompEstagSup
+  - action: utter_resposta_quest_atividades_ExtCompEstagSup
+
+## Modelos para novas histórias iniciadas pela dúvida sobre tirar o atestado de matrícula, declaração de vínculos e histórico
+# - story: caminho para atestado de matrícula, vínculo e/ou histórico + 
+#   steps:
+#   - intent: inicio
+#   - action: utter_resposta_inicio
+
+#   - intent: quest_atestado_MatVincHist
+#   - action: utter_resposta_quest_atestado_MatVincHist
+  
+#   - intent: outra_duvida
+#   - action: utter_proxima_duvida
+  
+#   - intent: quest_matricula_
+#   - action: utter_resposta_quest_
